@@ -11,7 +11,7 @@ don't know work well in macos
 1. execute exec_app.py
 2. basic working directory is my local directory. please change with yours
 3. you can use your snippet
-   > change c++.txt in snippets folder
+   > change c++.txt in snippets folder <br>
    > this program will generate problem name in first line and problem id in second line
 4. TODO make other problem language snippet
 
