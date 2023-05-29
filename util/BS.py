@@ -33,7 +33,7 @@ def get_problem_info(link):
     return 0, None
 
 
-def make_file(problem_id, problem_title):
+def make_file(problem_id, problem_title, program_dir):
     print("current directory:")
     print("##" + os.getcwd() + "##")
     file_extension = ""
@@ -53,20 +53,35 @@ def make_file(problem_id, problem_title):
         if os.path.isfile(file_name):
             print("problem file already exist")
         else:
+            # TODO make snippet to txt file and read them to make
             f = open(file_name, "w", encoding="UTF-8")
             if file_extension == "cpp":
-                f.write("// problem: " + problem_title + "\n")
-                f.write("// id: " + str(problem_id) + "\n")
-                f.write("// time taken:\n")
-                f.write("#include <bits/stdc++.h>\n")
-                f.write("using namespace std;\n")
-                f.write("int main(void)\n")
-                f.write("{\n")
-                f.write("    ios::sync_with_stdio(false);\n")
-                f.write("    cin.tie(nullptr);\n")
-                f.write("\n")
-                f.write("    return 0;\n")
-                f.write("}\n")
+                # f.write("// problem: " + problem_title + "\n")
+                # f.write("// id: " + str(problem_id) + "\n")
+                # f.write("// time taken:\n")
+                # f.write("#include <bits/stdc++.h>\n")
+                # f.write("using namespace std;\n")
+                # f.write("int main(void)\n")
+                # f.write("{\n")
+                # f.write("    ios::sync_with_stdio(false);\n")
+                # f.write("    cin.tie(nullptr);\n")
+                # f.write("\n")
+                # f.write("    return 0;\n")
+                # f.write("}\n")
+                t = open(program_dir + "\snippets\c++.txt", "r", encoding="UTF-8")
+                cnt = 0
+                while True:
+                    line = t.readline()
+                    if not line:
+                        break
+                    if cnt == 0:
+                        f.write(line.split("\n")[0] + problem_title + "\n")
+                    elif cnt == 1:
+                        f.write(line.split("\n")[0] + str(problem_id) + "\n")
+                    else:
+                        f.write(line)
+                    cnt += 1
+
             elif file_extension == "py":
                 f.write("# problem: " + problem_title + "\n")
                 f.write("# id: " + str(problem_id) + "\n")

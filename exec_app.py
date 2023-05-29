@@ -1,6 +1,7 @@
 from util.BS import get_problem_info, make_file
 import os
 
+program_dir = ""
 cur_wd = r"C:\Users\gnaro\OneDrive\바탕 화면\Solvedac_practice\With_Levels\Temp"
 cur_user = "gnaroshi"
 problem_id = 0
@@ -81,9 +82,9 @@ def exec(cur_wd, cur_user, problem_id, problem_title, problem_list):
             if len(problem_list) != 0:
                 for temp_problem in problem_list:
                     print(temp_problem)
-                    make_file(temp_problem[0], temp_problem[1])
+                    make_file(temp_problem[0], temp_problem[1], program_dir)
             else:
-                make_file(problem_id, problem_title)
+                make_file(problem_id, problem_title, program_dir)
         elif n == 6:
             if len(problem_list) > 1:
                 print("listed problem size: " + str(len(problem_list)))
@@ -111,6 +112,7 @@ def exec(cur_wd, cur_user, problem_id, problem_title, problem_list):
 
 
 if __name__ == "__main__":
+    program_dir = os.getcwd()
     os.chdir(cur_wd)
 
     exec(cur_wd, cur_user, problem_id, problem_title, problem_list)
