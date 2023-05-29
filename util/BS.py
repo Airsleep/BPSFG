@@ -1,10 +1,6 @@
 import os
-import time
-import re
 import requests
 import json
-import pandas as pd
-from bs4 import BeautifulSoup
 
 boj_base_url = "https://www.acmicpc.net/problem/"
 
@@ -35,12 +31,6 @@ def get_problem_info(link):
     else:
         print("failed get problem info")
     return 0, None
-    # bp_response = requests.get(link)
-    # bp_html = bp_response.text
-    # bp_soup = BeautifulSoup(bp_html, "html.parser")
-    # problem_title = bp_soup.find("span", {"id": "problem_title"})
-    # print(bp_soup)
-    # print(problem_title)
 
 
 def make_file(problem_id, problem_title):
