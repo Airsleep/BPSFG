@@ -1,15 +1,19 @@
 from util.BS import get_problem_info, make_file
 import os
+import sys
 
 program_dir = ""
+# example working directory of Windows
 cur_wd = r"C:\Users\gnaro\OneDrive\바탕 화면\Solvedac_practice\With_Levels\Temp"
+# example working directory of MacOS
+# cur_wd = r"./temp"
 cur_user = "gnaroshi"
 problem_id = 0
 problem_title = None
 problem_list = []
 
 
-def exec(cur_wd, cur_user, problem_id, problem_title, problem_list):
+def exec(cur_wd, cur_user, problem_id, problem_title, problem_list, platform):
     while True:
         print("1: select working directory")
         print("2: select boj problem")
@@ -82,9 +86,9 @@ def exec(cur_wd, cur_user, problem_id, problem_title, problem_list):
             if len(problem_list) != 0:
                 for temp_problem in problem_list:
                     print(temp_problem)
-                    make_file(temp_problem[0], temp_problem[1], program_dir)
+                    make_file(temp_problem[0], temp_problem[1], program_dir, platform)
             else:
-                make_file(problem_id, problem_title, program_dir)
+                make_file(problem_id, problem_title, program_dir, platform)
         elif n == 6:
             if len(problem_list) > 1:
                 print("listed problem size: " + str(len(problem_list)))
@@ -114,5 +118,4 @@ def exec(cur_wd, cur_user, problem_id, problem_title, problem_list):
 if __name__ == "__main__":
     program_dir = os.getcwd()
     os.chdir(cur_wd)
-
-    exec(cur_wd, cur_user, problem_id, problem_title, problem_list)
+    exec(cur_wd, cur_user, problem_id, problem_title, problem_list, sys.platform)
