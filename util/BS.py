@@ -33,7 +33,7 @@ def get_problem_info(link):
     return 0, None
 
 
-def make_file(problem_id, problem_title, program_dir):
+def make_file(problem_id, problem_title, program_dir, platform):
     print("current directory:")
     print("##" + os.getcwd() + "##")
     file_extension = ""
@@ -68,7 +68,10 @@ def make_file(problem_id, problem_title, program_dir):
                 # f.write("\n")
                 # f.write("    return 0;\n")
                 # f.write("}\n")
-                t = open(program_dir + "\snippets\c++.txt", "r", encoding="UTF-8")
+                if platform == "darwin":
+                    t = open(program_dir + "/snippets/c++.txt", "r", encoding="UTF-8")
+                else:
+                    t = open(program_dir + "\snippets\c++.txt", "r", encoding="UTF-8")
                 cnt = 0
                 while True:
                     line = t.readline()
