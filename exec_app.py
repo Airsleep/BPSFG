@@ -64,7 +64,7 @@ def exec(cur_wd, cur_user, problem_id, problem_title, problem_list, platform):
             print("how many?")
             m = int(input())
             for i in range(m):
-                print("input " + str(i) + "boj problem link")
+                print("input :" + str(i + 1) + ": boj problem link")
                 link = input()
                 problem_id, problem_title = get_problem_info(link)
 
