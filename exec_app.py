@@ -88,7 +88,11 @@ def exec(cur_wd, cur_user, problem_id, problem_title, problem_list, platform):
                     print(temp_problem)
                     make_file(temp_problem[0], temp_problem[1], program_dir, platform)
             else:
-                make_file(problem_id, problem_title, program_dir, platform)
+                if problem_id != 0 and problem_title != None:
+                    make_file(problem_id, problem_title, program_dir, platform)
+                else:
+                    print("there is no selected problems")
+
         elif n == 6:
             if len(problem_list) > 1:
                 print("listed problem size: " + str(len(problem_list)))
